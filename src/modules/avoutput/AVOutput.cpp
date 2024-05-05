@@ -213,7 +213,6 @@ bool write_audio_frame(AVFormatContext *fmt_ctx, StreamDescription *output_strea
 }
 
 void open_video(const AVCodec *codec, StreamDescription *output_stream, AVDictionary *opt_arg) {
-void open_video(const AVCodec *codec, StreamDescription *output_stream, AVDictionary *opt_arg) {
     int ret;
     AVCodecContext *codec_ctx = output_stream->enc;
     AVDictionary *opt = nullptr;
@@ -237,7 +236,6 @@ void open_video(const AVCodec *codec, StreamDescription *output_stream, AVDictio
         throw(std::runtime_error("Could not copy the stream parameters."));
 }
 
-void open_audio(const AVCodec *codec, StreamDescription *output_stream, AVDictionary *opt_arg) {
 void open_audio(const AVCodec *codec, StreamDescription *output_stream, AVDictionary *opt_arg) {
     AVCodecContext *codec_ctx = output_stream->enc;
     AVDictionary *opt = nullptr;
@@ -325,7 +323,6 @@ AVOutput::~AVOutput() noexcept {
 void AVOutput::initialize() {
 	video_st_ = {};
 	audio_st_ = {};
-    const AVCodec *audio_codec, *video_codec;
     const AVCodec *audio_codec, *video_codec;
     AVDictionary *opt = nullptr;
 
