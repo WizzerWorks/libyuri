@@ -265,8 +265,10 @@ bool RawAVFile::open_file(const std::string& filename)
                 log[log::error] << "Failed to find decoder for video stream " << i;
                 return false;
             }
+            #if LIBAVCODEC_VERSION_MAJOR < 60
             if (video_streams_[i].codec->capabilities & AV_CODEC_CAP_TRUNCATED)
                 video_streams_[i].ctx->flags |= AV_CODEC_FLAG_TRUNCATED;
+            #endif
             if (video_streams_[i].format_out != 0) {
                 video_streams_[i].ctx->pix_fmt = libav::avpixelformat_from_yuri(video_streams_[i].format_out);
             }
